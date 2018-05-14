@@ -1,19 +1,24 @@
 //length of the one square from which the field is made
-let fieldSize=30;
+let fieldSize=20;
 //number of square pieces horizontally and vertically
-let h=15, w=15;
+let h=20, w=20;
 let separatorWidth=1;
 
+//2d vector of snake's curent direction
 let directionVector;
-
 let prevDirectionVector;
 
+//position of snake's food
 let food={
 	x: undefined,
 	y: undefined
 }
 
+//time between each move
+let notMovingPeriod;
+
 let timer;
+//whether player started the game
 let gameStarted;
 
 //canvas handle and 2d context
@@ -26,6 +31,8 @@ function initCanvas()
 	//set size of the canvas
 	canvas.width=(fieldSize + separatorWidth) * w - separatorWidth;
 	canvas.height=(fieldSize + separatorWidth) * h - separatorWidth;
+	//set verticall position
+	canvas.style.marginTop=(window.innerHeight - canvas.height)/2 + "px";
 }
 
 //class representing one piece of the snake's body
@@ -63,29 +70,15 @@ function randFood()
 	{
 		food.x=Math.round(Math.random() * (w - 1));
 		food.y=Math.round(Math.random() * (h - 1));
-		for (i=0 ; i<snake.length && (snake[i]!=food.x || snake[i].y!=food.y) ; i++);
+		for (i=0 ; i<snake.length && (snake[i].x!=food.x || snake[i].y!=food.y) ; i++);
 	}
 	while (i!=snake.length);
 }
 
-function drawFood()
-{
-	ctx.fillStyle="yellow";
-	ctx.beginPath();
-	ctx.arc(food.x * (fieldSize + separatorWidth) + (fieldSize/2), food.y * (fieldSize + separatorWidth) + (fieldSize/2), fieldSize/2, 0, Math.PI*2);
-	ctx.fill();
-}
-
-function drawMessage(msg)
-{
-	ctx.font = "36px Arial";
-	ctx.fillStyle="blue";
-	ctx.textAlign="center";
-	ctx.fillText(msg, canvas.width/2, canvas.height/2);
-}
-
+//init game variables
 function initGame()
 {
+	notMovingPeriod=100;
 	gameStarted=false;
 	initSnake(7);
 	randFood();
@@ -101,6 +94,9 @@ function initGame()
 		y: -1
 	}
 }
+
+//drawing functions
+//************************************************************************
 
 function clearCanvas()
 {
@@ -121,6 +117,23 @@ function drawSeparators()
 		ctx.fillRect(0, i * (fieldSize + separatorWidth), canvas.width, separatorWidth);
 }
 
+function drawFood()
+{
+	ctx.fillStyle="yellow";
+	ctx.beginPath();
+	ctx.arc(food.x * (fieldSize + separatorWidth) + (fieldSize/2), food.y * (fieldSize + separatorWidth) + (fieldSize/2), fieldSize/2, 0, Math.PI*2);
+	ctx.fill();
+}
+
+//draw text
+function drawMessage(msg)
+{
+	ctx.font = "36px Arial";
+	ctx.fillStyle="blue";
+	ctx.textAlign="center";
+	ctx.fillText(msg, canvas.width/2, canvas.height/2);
+}
+
 function drawSnake()
 {
 	for (let i=0 ; i<snake.length ; i++)
@@ -135,28 +148,22 @@ function drawGame()
 	drawFood();
 }
 
+//***********************************************************************
+
 function checkForCollision()
 {
 	let headX=snake[0].x + directionVector.x, headY=snake[0].y + directionVector.y;
 	//check for collision with borders
 	if (headX<0 || headX>=w || headY<0 || headY>=h)
 		return true;
+
 	//check for collisions with pieces of snake's body
 	for (let i=1 ; i<snake.length - 1; i++)
 		if (snake[i].x==headX && snake[i].y==headY)
 			return true;
-	return false;
-}
 
-//if snake ate food then it will grow
-function eatingFood(oldTail)
-{
-	if (snake[0].x==food.x && snake[0].y==food.y)
-	{
-		//grow
-		snake.push(new SnakeBody(oldTail.x, oldTail.y, oldTail.color));
-		randFood();
-	}
+	//no collisions
+	return false;
 }
 
 function moveSnake()
@@ -178,8 +185,12 @@ function moveSnake()
 	//if snake picked food the grow --> don't delete old tail
 	if (snake[0].x==food.x && snake[0].y==food.y)
 	{
+		//snake goes faster
+		notMovingPeriod=notMovingPeriod>20 ? notMovingPeriod - 1 : notMovingPeriod;
+		clearInterval(timer);
+		timer=setInterval(moveSnake, notMovingPeriod);
+		//randomize new food's position
 		randFood();
-		console.log(food.x, "  ", food.y);
 	}
 	else
 		snake.pop();
@@ -236,7 +247,7 @@ window.addEventListener("keydown", function(event)
 	{
 		gameStarted=true;
 		//start counting
-		timer=setInterval(moveSnake, 300);
+		timer=setInterval(moveSnake, notMovingPeriod);
 	}
 }
 )
