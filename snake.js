@@ -21,6 +21,8 @@ let timer;
 //whether player started the game
 let gameStarted;
 
+let score;
+
 //canvas handle and 2d context
 let canvas, ctx;
 
@@ -31,8 +33,13 @@ function initCanvas()
 	//set size of the canvas
 	canvas.width=(fieldSize + separatorWidth) * w - separatorWidth;
 	canvas.height=(fieldSize + separatorWidth) * h - separatorWidth;
-	//set verticall position
-	canvas.style.marginTop=(window.innerHeight - canvas.height)/2 + "px";
+	
+	document.getElementById("menu").style.width=canvas.width + "px";
+}
+
+function updateScore()
+{
+	document.getElementById("score").innerHTML="Score: " + (++score);
 }
 
 //class representing one piece of the snake's body
@@ -78,8 +85,11 @@ function randFood()
 //init game variables
 function initGame()
 {
+	clearInterval(timer);
 	notMovingPeriod=100;
 	gameStarted=false;
+	score=-1;
+	updateScore();
 	initSnake(7);
 	randFood();
 	drawGame();
@@ -191,6 +201,7 @@ function moveSnake()
 		timer=setInterval(moveSnake, notMovingPeriod);
 		//randomize new food's position
 		randFood();
+		updateScore();
 	}
 	else
 		snake.pop();

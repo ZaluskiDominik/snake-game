@@ -11,4 +11,47 @@ body
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
+	margin-top: 24px;
+}
+
+#menu
+{
+	margin-top: 3%;
+	height: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-template-columns: 2fr minmax(auto, 110px);
+	grid-column-gap: 30%;
+}
+
+#playAgainButton
+{
+	height: 24px;
+	background-color: #002255;
+	margin-left: 10px;
+	font-size: 20px;
+	color: white;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
+}
+
+#playAgainButton:hover
+{
+	background-color: #551122;
+	cursor: pointer;
+}
+
+#score
+{
+	height: 22px;
+	margin-right: 10px;
+	padding: 4px;
+	border: 2px solid black;
+	color: red;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
 }
