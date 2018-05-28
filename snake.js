@@ -70,6 +70,7 @@ function initSnake(num)
 		snake[i]=new SnakeBody(Math.floor(w/2), Math.floor(h/2) + i, "green");
 }
 
+//rand food which snake can eat and score a point
 function randFood()
 {
 	let i;
@@ -77,6 +78,7 @@ function randFood()
 	{
 		food.x=Math.round(Math.random() * (w - 1));
 		food.y=Math.round(Math.random() * (h - 1));
+		//check if food's position isn't equal to some piece of snake's body
 		for (i=0 ; i<snake.length && (snake[i].x!=food.x || snake[i].y!=food.y) ; i++);
 	}
 	while (i!=snake.length);
@@ -89,6 +91,7 @@ function initGame()
 	notMovingPeriod=100;
 	gameStarted=false;
 	score=-1;
+
 	updateScore();
 	initSnake(7);
 	randFood();
@@ -181,14 +184,13 @@ function moveSnake()
 	//collision checking
 	if ( checkForCollision() )
 	{
-		//end game
+		//end of game
 		clearInterval(timer);
 		drawMessage("End of game");
 		return;
 	}
 
-	//make a move
-	//new head
+	//append new head
 	snake.unshift( new SnakeBody(snake[0].x + directionVector.x, snake[0].y + directionVector.y, snake[0].color) );
 	snake[1].color=snake[2].color;
 	
