@@ -26,14 +26,14 @@ let score;
 //handles for canvas and 2d context
 let canvas, ctx;
 
-(function initCanvas()
+function initCanvas()
 {
 	canvas=document.getElementById("canvas");
 	ctx=canvas.getContext("2d");
 	//set size of the canvas
 	canvas.width=(fieldSize + separatorWidth) * w - separatorWidth;
 	canvas.height=(fieldSize + separatorWidth) * h - separatorWidth;
-})();
+};
 
 //increment the value of player's score
 function updateScore()
@@ -115,8 +115,6 @@ function initGame()
 	drawMessage("Press 'enter' to start...");
 	console.log("init");
 }
-
-initGame();
 
 //drawing functions
 //************************************************************************
@@ -292,3 +290,8 @@ window.addEventListener("keydown", function(event)
 	onKeyPressed(event);
 	handleStartGameKeyPressed(event);
 });
+
+window.onload = () => {
+	initCanvas();
+	initGame();
+};
