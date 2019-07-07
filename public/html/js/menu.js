@@ -35,19 +35,19 @@ let menu = {
         setTimeout(this.setMenuBtnClosed.bind(this), this.msSlideDuration);
     },
 
-    //inserts menu btn next to snake logo in nav
+    //changes menu btn positioning to static so its position will be reersed
+    //to where it belongs
     setMenuBtnOpened : function()
     {
         $("#menuBtn").css("position", "static")
             .show()
-            .appendTo($("nav > div:first-child"));
     },
 
-    //inserts menu btn to body with fixed positioning
+    //changes menu btn positioning to fixed so it will be displayed in
+    //top left corner of the body
     setMenuBtnClosed : function()
     {
         $("#menuBtn").css("position", "fixed")
-            .appendTo(document.body)
             .hide().fadeIn(1000);
     },
 
