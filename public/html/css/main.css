@@ -1,0 +1,26 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	overflow: hidden;
+	background-color: #444;
+	font-family: Verdana
+}
+
+button
+{
+	outline: none;
+	border: none;
+	padding: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+#row
+{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100%;
+}

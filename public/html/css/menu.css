@@ -1,0 +1,64 @@
+nav
+{
+    position: relative;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 200px;
+    padding: 10px;
+    background-color: #333;
+    box-shadow: 2px 0 2px black;
+    min-height: 100%;
+    animation-fill-mode: forwards;
+    animation-duration: 0.7s;
+}
+
+nav > div:first-child
+{
+    margin: 10px 10px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav > div:first-child::before
+{
+    content: '';
+    background-image: url(/resources/img/snake.png);
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+}
+
+#menuBtn
+{
+    transition: transform 0.5s;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+}
+
+#menuBtn::after
+{
+    content: '\f0c9';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 36px;
+    text-shadow: 0px 0px 2px gray;
+}
+
+#menuBtn:hover
+{
+    transform: rotateZ(90deg);
+}
+
+@keyframes slideIn
+{
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+
+}
