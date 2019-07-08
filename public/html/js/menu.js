@@ -5,10 +5,15 @@ let menu = {
     //time of slideIn and slideOut animation in miliseconds
     msSlideDuration : 700,
 
-    //inits event handler for menu btn
+    //inits event handlers for menu btn and restartGame btn
     init : function()
     {
         $("#menuBtn").click(menu.menuBtnClicked.bind(menu));
+        $("#restartGameBtn").click(game.restart.bind(game));
+        //prevent getting keybord focus on button click
+        $("button").on("mousedown", (e) => {
+            e.preventDefault();
+        });
     },
 
     //slides in menu

@@ -1,297 +1,197 @@
-//length of the one square from which the field is made
-let fieldSize=20;
-//number of square pieces horizontally and vertically
-let h=20, w=20;
-let separatorWidth=1;
+'use strict'
 
-//2d vector of snake's curent direction
-let directionVector;
-let prevDirectionVector;
+let snake = {
+	//2d vector of snake's curent direction
+	directionVector : null,
+	//2d vector of snake's previous direction
+	prevDirectionVector : null,
+	//array of snake's pieces of body
+	snakeParts : null,
+	//time in miliseconds between previous and next snake move
+	timeBetweenMoves : null,
 
-//position of snake's food
-let food={
-	x: undefined,
-	y: undefined
-}
-
-//time between each move
-let notMovingPeriod;
-
-let timer;
-//whether player started the game
-let gameStarted;
-
-let score;
-
-//handles for canvas and 2d context
-let canvas, ctx;
-
-function initCanvas()
-{
-	canvas=document.getElementById("canvas");
-	ctx=canvas.getContext("2d");
-	//set size of the canvas
-	canvas.width=(fieldSize + separatorWidth) * w - separatorWidth;
-	canvas.height=(fieldSize + separatorWidth) * h - separatorWidth;
-};
-
-//increment the value of player's score
-function updateScore()
-{
-	document.getElementById("score").innerHTML="Score: " + (++score);
-}
-
-//class representing one piece of the snake's body
-let SnakeBody=function(x, y, color)
-{
-	this.x=x;
-	this.y=y;
-	this.color=color;
-}
-
-SnakeBody.prototype.draw=function()
-{
-	ctx.fillStyle=this.color;
-	ctx.fillRect(this.x * (fieldSize + separatorWidth), this.y * (fieldSize + separatorWidth), fieldSize, fieldSize);
-}
-
-//array of snake's pieces of body
-let snake;
-
-//create first pieces of snake's pieces of body
-function initSnake(num)
-{
-	snake=[];
-	//head
-	snake.push(new SnakeBody(Math.floor(w/2), Math.floor(h/2), "red"));
-	//rest
-	for (let i=1 ; i<num ; i++)
-		snake[i]=new SnakeBody(Math.floor(w/2), Math.floor(h/2) + i, "green");
-}
-
-//rand food which snake can eat and score a point
-function randFood()
-{
-	let i;
-	do
+	init : function()
 	{
-		food.x=Math.round(Math.random() * (w - 1));
-		food.y=Math.round(Math.random() * (h - 1));
-		//check if food's position isn't equal to some piece of snake's body
-		for (i=0 ; i<snake.length && (snake[i].x!=food.x || snake[i].y!=food.y) ; i++);
-	}
-	while (i!=snake.length);
-}
+		this.initDirectionVectors();
+		this.createSnake(7);
 
-//set initial value to snake's current direction vector and previous direction vector
-function initDirectionVectors()
-{
-	//snake goes up
-	prevDirectionVector={
-		x: 0,
-		y: -1
-	}
-	directionVector={
-		x: 0,
-		y: -1
-	}
-}
+		this.timeBetweenMoves = 100;
+	},
 
-//init game variables
-function initGame()
-{
-	//clear timer from previous game
-	clearInterval(timer);
-	notMovingPeriod=100;
-	gameStarted=false;
-	//reset score
-	score=-1;
-	updateScore();
+	//create snake made of given number of body's pieces
+	createSnake : function(num)
+	{
+		this.snakeParts = [];
+		
+		//head
+		let headPos = {
+			x : Math.floor(field.numSquares.w / 2),
+			y : Math.floor(field.numSquares.h / 2)
+		};
+		this.snakeParts.push( new SnakeBody(headPos.x, headPos.y, "red") );
+		
+		//rest of the snake
+		for (let i = 1 ; i < num ; i++)
+			this.snakeParts.push( new SnakeBody(headPos.x, headPos.y + i, "green") );
+	},
 
-	initDirectionVectors();
-	initSnake(7);
-	randFood();
-	drawGame();
-	drawMessage("Press 'enter' to start...");
-	console.log("init");
-}
+	//sets direction and previous direction vector so that snake initially goes up  
+	initDirectionVectors : function()
+	{
+		this.prevDirectionVector = {
+			x: 0,
+			y: -1
+		}
 
-//drawing functions
-//************************************************************************
+		this.directionVector = {
+			x: 0,
+			y: -1
+		}
+	},
 
-function clearCanvas()
-{
-	ctx.fillStyle="lightgray";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+	//draws snake
+	draw : function()
+	{
+		for (let i = 0 ; i < this.snakeParts.length ; i++)
+			this.snakeParts[i].draw();
+	},
 
-//draw lines that separates grid cells
-function drawSeparators()
-{
-	ctx.lineWidth=separatorWidth;
-	ctx.fillStyle="gray";
-	//vericall
-	for (let i=1 ; i<w ; i++)
-		ctx.fillRect(i * (fieldSize + separatorWidth) - 1, 0, separatorWidth, canvas.height);
+	//called from main loop, moves snake, checks collisions if food was picked
+	//grows snake's tail
+	update : function()
+	{
+		//check for snake collisions with wall and its own parts of body
+		//if collision occured exit function
+		if (this.handleCollisions())
+			return;
 
-	//horizontall
-	for (let i=1 ; i<h ; i++)
-		ctx.fillRect(0, i * (fieldSize + separatorWidth) - 1, canvas.width, separatorWidth);
-}
+		//remember tail position
+		let tailPos = this.snakeParts[this.snakeParts.length - 1].getPos();
 
-function drawFood()
-{
-	ctx.fillStyle="yellow";
-	ctx.beginPath();
-	ctx.arc(food.x * (fieldSize + separatorWidth) + (fieldSize/2), 
-		food.y * (fieldSize + separatorWidth) + (fieldSize/2), fieldSize/2, 0, Math.PI*2);
-	ctx.fill();
-}
+		//move snake
+		this.move();
 
-//draw text
-function drawMessage(msg)
-{
-	ctx.save();
-	ctx.font = "36px Arial";
-	ctx.fillStyle="blue";
-	ctx.textAlign="center";
-	ctx.shadowColor="black";
-	ctx.shadowBlur=8;
-	ctx.globalAlpha=0.7;
-	ctx.fillText(msg, canvas.width/2, canvas.height/2);
-	ctx.restore();
-}
+		//if food was picked grow and increase movement speed
+		this.handleFood(tailPos);
+	},
 
-//draw snake onto canvas
-function drawSnake()
-{
-	for (let i=0 ; i<snake.length ; i++)
-		snake[i].draw();
-}
+	//moves snake according to directionVector
+	move : function()
+	{
+		//for each body piece(excluding head) indexed as 'i' set
+		//position of body piece with index 'i - 1' 
+		for (let i = this.snakeParts.length - 1 ; i ; i--)
+			this.snakeParts[i].setPos( this.snakeParts[i - 1].getPos() );
 
-//call all defined drawing functions
-function drawGame()
-{
-	clearCanvas();
-	drawSeparators();
-	drawSnake();
-	drawFood();
-}
+		//move head according to directionVector
+		let headPos = this.snakeParts[0].getPos();
+		this.snakeParts[0].setPos({
+			x : headPos.x + this.directionVector.x, 
+			y : headPos.y + this.directionVector.y
+		});		
 
-//***********************************************************************
+		//after move update previous direction vector
+		this.prevDirectionVector.x = this.directionVector.x;
+		this.prevDirectionVector.y = this.directionVector.y;
+	},
 
-function checkForCollision()
-{
-	let headX=snake[0].x + directionVector.x, headY=snake[0].y + directionVector.y;
-	//check for collision with borders
-	if (headX<0 || headX>=w || headY<0 || headY>=h)
-		return true;
+	//calls end game function and returns true if head snake collide with
+	//its body or walls
+	handleCollisions : function()
+	{
+		//calculate new position of head when snake will make move
+		let headPos = this.snakeParts[0].getPos();
+		headPos.x += this.directionVector.x;
+		headPos.y += this.directionVector.y;
 
-	//check for collisions with pieces of snake's body
-	for (let i=1 ; i<snake.length - 1; i++)
-		if (snake[i].x==headX && snake[i].y==headY)
+		//if head will collide with snake's body or wall, game over
+		if ( this.isCollidingWithBody(headPos) || this.isCollidingWithWalls(headPos) )
+		{
+			game.end();
 			return true;
-
-	//no collisions
-	return false;
-}
-
-function moveSnake()
-{
-	//collision checking
-	if ( checkForCollision() )
-	{
-		//end of game
-		clearInterval(timer);
-		drawMessage("End of game");
-		return;
-	}
-
-	//append new head
-	snake.unshift( new SnakeBody(snake[0].x + directionVector.x, snake[0].y + directionVector.y, snake[0].color) );
-	snake[1].color=snake[2].color;
-	
-	//if snake picked food the grow --> don't delete old tail
-	if (snake[0].x==food.x && snake[0].y==food.y)
-	{
-		//snake goes faster
-		notMovingPeriod=notMovingPeriod>20 ? notMovingPeriod - 1 : notMovingPeriod;
-		clearInterval(timer);
-		timer=setInterval(moveSnake, notMovingPeriod);
-		//randomize new food's position
-		randFood();
-		updateScore();
-	}
-	else
-		snake.pop();
-
-	//update previous direction of the snake
-	prevDirectionVector.x=directionVector.x;
-	prevDirectionVector.y=directionVector.y;
-
-	//redraw the canvas
-	drawGame();
-}
-
-//handle player's keys(up, down, left, right)
-function onKeyPressed(event)
-{
-	switch (event.keyCode)
-	{
-	//up
-	case 38:
-		if (prevDirectionVector.y!=1)
-		{
-			directionVector.x=0;
-			directionVector.y=-1;
 		}
-		break;
-	//down
-	case 40:
-		if (prevDirectionVector.y!=-1)
-		{
-			directionVector.x=0;
-			directionVector.y=1;
-		}
-		break;
-	//left
-	case 37:
-		if (prevDirectionVector.x!=1)
-		{
-			directionVector.x=-1;
-			directionVector.y=0;
-		}
-		break;
-	//right
-	case 39:
-		if (prevDirectionVector.x!=-1)
-		{
-			directionVector.x=1;
-			directionVector.y=0;
-		}
-		break;
-	}
-}
 
-function handleStartGameKeyPressed(event)
-{
-	//start game when player press enter
-	if ( (!gameStarted) && event.keyCode==13 )
+		return false;
+	},
+
+	//returns true if headPos collide with snake's body
+	isCollidingWithBody : function(headPos)
 	{
-		gameStarted=true;
-		//start counting
-		timer=setInterval(moveSnake, notMovingPeriod);
+		//don't check collision with tail, it will move from that position
+		for (let i = 1 ; i < this.snakeParts.length - 1 ; i++)
+		{
+			if ( this.snakeParts[i].squareX == headPos.x && 
+				this.snakeParts[i].squareY == headPos.y )
+					return true;
+		}
+
+		return false;
+	},
+
+	//returns true if headPos collid with walls
+	isCollidingWithWalls : function(headPos)
+	{
+		if ( headPos.x < 0 || headPos.x >= field.numSquares.w 
+			|| headPos.y < 0 || headPos.y >= field.numSquares.h )
+				return true;
+		
+		return false;
+	},
+
+	//if head collides with food pick it up, grow and increase movement speed
+	handleFood : function(prevTailPos)
+	{
+		let headPos = this.snakeParts[0].getPos();
+		if ( headPos.x == food.pos.squareX && headPos.y == food.pos.squareY )
+		{
+			//grow and increase move speed
+			this.grow(prevTailPos);
+			//increase speed if timeBetweenMoves is greater than 20ms
+			snake.timeBetweenMoves -= ( snake.timeBetweenMoves > 20 ) * 2;
+			//rand new position of food
+			food.randPos();
+		}
+	},
+
+	//increses length of snake's body
+	grow : function(prevTailPos)
+	{
+		this.snakeParts.push( new SnakeBody(prevTailPos.x, prevTailPos.y, "green") );
+	},
+
+	//handle player's keys(up, down, left, right)
+	keyPressed(key)
+	{
+		switch (key)
+		{
+		//up
+		case 38:
+			this.setDirectionIfNotOppositeToPrev(0, -1);
+			break;
+		//down
+		case 40:
+			this.setDirectionIfNotOppositeToPrev(0, 1);
+			break;
+		//left
+		case 37:
+			this.setDirectionIfNotOppositeToPrev(-1, 0);
+			break;
+		//right
+		case 39:
+			this.setDirectionIfNotOppositeToPrev(1, 0);
+			break;
+		}
+	},
+
+	//sets new direction vector value if previous direction is different that
+	//opposite of the given vector in parameter
+	setDirectionIfNotOppositeToPrev(dirVecX, dirVecY)
+	{
+		if ( this.prevDirectionVector.x !== -dirVecX
+			&& this.prevDirectionVector.y !== -dirVecY )
+		{
+			this.directionVector.x = dirVecX;
+			this.directionVector.y = dirVecY;
+		}
 	}
-}
-
-//keyboard events
-window.addEventListener("keydown", function(event)
-{
-	onKeyPressed(event);
-	handleStartGameKeyPressed(event);
-});
-
-window.onload = () => {
-	initCanvas();
-	initGame();
 };

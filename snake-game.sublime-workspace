@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"dirVe",
+				"dirVecY"
+			],
+			[
+				"dirV",
+				"dirVecX"
+			],
+			[
+				"direc",
+				"directionVector"
+			],
+			[
+				"snake",
+				"snakeParts"
+			],
+			[
+				"restar",
+				"restart"
+			],
+			[
+				"clear",
+				"clearTimer"
+			],
+			[
+				"create",
+				"createSnake"
+			],
+			[
+				"dra",
+				"drawBackground"
+			],
+			[
+				"separ",
+				"separatorWidth"
+			],
+			[
+				"square",
+				"squareX"
+			],
+			[
+				"squa",
+				"squareY"
+			],
+			[
+				"sepa",
+				"separatorWidth"
+			],
+			[
+				"rotate",
+				"rotateZ()\ttransform"
+			],
+			[
 				"padd",
 				"padding-top\tproperty"
 			],
@@ -62,10 +114,6 @@
 			[
 				"ring",
 				"rings"
-			],
-			[
-				"clear",
-				"clearInterval"
 			],
 			[
 				"curr",
@@ -466,54 +514,6 @@
 			[
 				"req",
 				"require_once"
-			],
-			[
-				"erro",
-				"error_log"
-			],
-			[
-				"append",
-				"appendErrorLog"
-			],
-			[
-				"maxNum",
-				"maxNumDuration"
-			],
-			[
-				"met",
-				"meta\tTag"
-			],
-			[
-				"accou",
-				"accountStmt"
-			],
-			[
-				"account",
-				"account_types"
-			],
-			[
-				"acc",
-				"accountName"
-			],
-			[
-				"tra",
-				"traceStr"
-			],
-			[
-				"production",
-				"productionHandler"
-			],
-			[
-				"spa",
-				"space-between\tjustify-content"
-			],
-			[
-				"div",
-				"divTemplate"
-			],
-			[
-				"border",
-				"border-top\tproperty"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "public/html/index.php",
 			"settings":
 			{
-				"buffer_size": 1589,
+				"buffer_size": 1864,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +532,43 @@
 			"file": "public/html/css/menu.css",
 			"settings":
 			{
-				"buffer_size": 2519,
+				"buffer_size": 2656,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/html/js/snake.js",
+			"settings":
+			{
+				"buffer_size": 4111,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/html/js/food.js",
+			"settings":
+			{
+				"buffer_size": 136,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/html/js/field.js",
+			"settings":
+			{
+				"buffer_size": 1627,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/html/js/game.js",
+			"settings":
+			{
+				"buffer_size": 2052,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -596,6 +632,8 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/snake-game/public/html/js/body.js",
+		"/C/xampp/htdocs/snake-game/public/html/js/score.js",
 		"/C/xampp/htdocs/snake-game/public/html/css/main.css",
 		"/C/xampp/htdocs/snake-game/public/html/js/snake.js",
 		"/C/xampp/htdocs/snake-game/public/html/js/menu.js",
@@ -721,13 +759,11 @@
 		"/C/xampp/htdocs/file_upload/public/html/css/index/upload_section.css",
 		"/C/xampp/htdocs/file_upload/public/html/css/global.css",
 		"/C/xampp/htdocs/file_upload/public/html/css/index/upload_button.css",
-		"/C/xampp/htdocs/file_upload/public/html/css/global_style.css",
-		"/C/xampp/htdocs/file_upload/public/html/css/navbar.css",
-		"/C/xampp/htdocs/file_upload/public/html/js/index/index.js"
+		"/C/xampp/htdocs/file_upload/public/html/css/global_style.css"
 	],
 	"find":
 	{
-		"height": 41.3333333333
+		"height": 41.0
 	},
 	"find_in_files":
 	{
@@ -741,6 +777,41 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"headPos",
+			"numSquares",
+			"mapSquarePosToPos",
+			"mapS",
+			"ctx",
+			"snake",
+			"snakeParts",
+			"snake",
+			"body",
+			"drawGame",
+			"notMovin",
+			"function",
+			"clearCanvas",
+			"draw",
+			"null",
+			"snake",
+			"height",
+			"initGame",
+			"initCanvas",
+			"canvas",
+			"cells",
+			"function",
+			"fieldSize",
+			"field",
+			"mapSquarePosToPos",
+			"y",
+			"x",
+			"squareX",
+			"x",
+			"squareX",
+			"function",
+			"food",
+			"curent",
+			"fieldSize",
+			"12",
 			"slideAnimationHelper",
 			"triggerSlideAnimation",
 			"open",
@@ -833,42 +904,7 @@
 			"upload_alert",
 			"uploadTextFrame",
 			"top",
-			"444",
-			"666",
-			"important",
-			"profileIconBtn",
-			"button",
-			"444",
-			"black",
-			"lightgray",
-			"red",
-			"dddddd55",
-			"login",
-			"false",
-			"isLoggedIn",
-			"init",
-			"login",
-			"UserDat",
-			"connect",
-			"credentialsFound",
-			"login",
-			"die",
-			"var",
-			"restrict",
-			"functions",
-			"button",
-			"[\")",
-			"time",
-			"padd",
-			"email",
-			"placeholder",
-			"Password",
-			"MAX_NUM_DURATION",
-			"length",
-			"filesize",
-			"length",
-			"msLoopWait",
-			"micro_seconds"
+			"444"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -887,7 +923,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -896,19 +932,22 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1589,
+						"buffer_size": 1864,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1526,
-								1526
+								825,
+								825
 							]
 						],
 						"settings":
 						{
+							"SL.13.region_keys":
+							[
+							],
 							"SL.15.region_keys":
 							[
 								"sublime_linter.protected_regions"
@@ -918,7 +957,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 418.0,
+						"translation.y": 238.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -930,19 +969,22 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2519,
+						"buffer_size": 2656,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2264,
-								2264
+								5,
+								5
 							]
 						],
 						"settings":
 						{
+							"SL.14.region_keys":
+							[
+							],
 							"SL.43.region_keys":
 							[
 							],
@@ -951,7 +993,126 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2418.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/html/js/snake.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4111,
+								4111
+							]
+						],
+						"settings":
+						{
+							"SL.16.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3393.33333333,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/html/js/food.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								114,
+								114
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/html/js/field.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1627,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								188,
+								188
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/html/js/game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2052,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1223,
+								1223
+							]
+						],
+						"settings":
+						{
+							"SL.17.region_keys":
+							[
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1013,12 +1174,24 @@
 		"selected_items":
 		[
 			[
-				"mai",
-				"public\\html\\css\\main.css"
+				"fiel",
+				"public\\html\\js\\field.js"
+			],
+			[
+				"body",
+				"public\\html\\js\\body.js"
+			],
+			[
+				"bod",
+				"public\\html\\js\\body.js"
 			],
 			[
 				"snake",
 				"public\\html\\js\\snake.js"
+			],
+			[
+				"mai",
+				"public\\html\\css\\main.css"
 			],
 			[
 				"menu",
@@ -1511,18 +1684,6 @@
 			[
 				"index.js",
 				"public\\html\\js\\index\\index.js"
-			],
-			[
-				"login-bt",
-				"private\\templates\\login-btn.php"
-			],
-			[
-				"user/",
-				"public\\resources\\routes\\api\\user\\data\\get.php"
-			],
-			[
-				"error-handl",
-				"private\\php\\error-handler.php"
 			]
 		],
 		"width": 0.0

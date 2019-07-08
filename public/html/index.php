@@ -18,15 +18,20 @@
         <link rel="stylesheet" href="css/menu.css">
 
 
-        <!-- <script src="js/snake.js"></script> -->
         <script src="js/menu.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/field.js"></script>
+        <script src="js/snake.js"></script>
+        <script src="js/food.js"></script>
+        <script src="js/body.js"></script>
+        <script src="js/score.js"></script>
 	</head>
 
 	<body>
         <div id="row">
             <nav>
                 <div>
-                    <button id="menuBtn"></button>
+                    <button id="menuBtn" tabindex="-1"></button>
                 </div>
 
                 <div id="gameInfo">
@@ -39,7 +44,7 @@
                         <span id="gameDurationVal"></span>
                     </div>
                 </div>
-                <button id="restartGameBtn">
+                <button id="restartGameBtn" tabindex="-1">
                     <i class="fas fa-redo"></i>Play again
                 </button>
 
