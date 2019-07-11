@@ -616,6 +616,7 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/snake-game/public/html/css/canvas.css",
 		"/C/xampp/htdocs/snake-game/public/html/js/field.js",
 		"/C/xampp/htdocs/snake-game/public/html/js/food.js",
 		"/C/xampp/htdocs/snake-game/public/html/js/body.js",
@@ -636,7 +637,6 @@
 		"/C/xampp/htdocs/snake-game/public/html/js/menu.js",
 		"/C/xampp/htdocs/snake-game/public/html/js/score.js",
 		"/C/xampp/htdocs/snake-game/public/html/css/main.css",
-		"/C/xampp/htdocs/snake-game/public/html/css/canvas.css",
 		"/C/Users/Taisa/Desktop/snake-game/public/html/js/snake.js",
 		"/C/Users/Taisa/Desktop/snake-game/public/html/css/style.css",
 		"/C/Users/Taisa/Desktop/snake-game/public/html/index.html",
@@ -747,7 +747,7 @@
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 29.0
 	},
 	"find_in_files":
 	{
@@ -761,6 +761,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"brown",
+			"gray",
+			"lightgray",
 			"15",
 			"updatedScores",
 			"playerName",
@@ -885,10 +888,7 @@
 			"777",
 			"lightgray",
 			"FontAwesome",
-			"block",
-			"lightgray",
-			"updateScore",
-			"getTotalCostOfUserOrders"
+			"block"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -907,7 +907,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -944,7 +944,7 @@
 						"translation.y": 1098.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -978,7 +978,7 @@
 						"translation.y": 2378.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1008,7 +1008,7 @@
 						"translation.y": 2638.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1024,8 +1024,8 @@
 						"selection":
 						[
 							[
-								12,
-								12
+								1631,
+								1631
 							]
 						],
 						"settings":
@@ -1042,10 +1042,10 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 538.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1103,6 +1103,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"fie",
+				"public\\html\\js\\field.js"
+			],
+			[
+				"can",
+				"public\\html\\css\\canvas.css"
+			],
 			[
 				"food",
 				"public\\html\\js\\food.js"
@@ -1606,14 +1614,6 @@
 			[
 				"custo",
 				"private\\php\\custom-exceptions.php"
-			],
-			[
-				"path",
-				"private\\config\\paths.php"
-			],
-			[
-				"upload_win",
-				"public\\html\\css\\index\\upload_window.css"
 			]
 		],
 		"width": 0.0

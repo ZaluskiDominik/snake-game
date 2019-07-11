@@ -24,7 +24,7 @@ let field = {
     drawSeparators : function()
     {
         game.ctx.lineWidth = this.separatorWidth;
-        game.ctx.fillStyle = "gray";
+        game.ctx.fillStyle = "#999";
 
         //vericall
         for (let i = 1 ; i < field.numSquares.w ; i++)
@@ -44,7 +44,7 @@ let field = {
     //draws canvas background
     drawBackground : function()
     {
-        game.ctx.fillStyle = "lightgray";
+        game.ctx.fillStyle = "#ffe4c4";
         game.ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
     },
 
