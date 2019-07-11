@@ -1,6 +1,6 @@
 :root
 {
-  --menu-width: 230px;
+  --menu-width: 260px;
 }
 
 nav
@@ -144,11 +144,10 @@ nav > div:first-child::before
 #topScores
 {
     margin-top: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     background-color: #ffdead;
     border-radius: 4px;
-    height: 200px;
+    min-height: 180px;
     box-shadow: -1px -1px 4px #8B4513 inset;
 }
 
@@ -163,4 +162,67 @@ nav > div:first-child::before
     letter-spacing: 1px;
     font-size: 30px;
     text-shadow: 1px 1px 2px #444;
+}
+
+#topScores table
+{
+    border-spacing: 0;
+    width: 100%;
+}
+
+#topScores td, #topScores th
+{
+    box-sizing: border-box;
+    height: 30px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#topScores td
+{
+    padding: 0 5px 0 5px;    
+}
+
+#topScores td:first-child, #topScores th:first-child
+{
+    max-width: 20%;
+}
+
+#topScores td:nth-child(2), #topScores th:nth-child(2)
+{
+    width: 60%;
+    max-width: 100px;
+    color: #444;
+}
+
+#topScores td:nth-child(3), #topScores th:nth-child(3)
+{
+    width: 20%;
+    max-width: 60px;
+    color: green;
+}
+
+#topScores tr > td:first-child::before
+{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 20px;
+    content: '\f091';
+    text-shadow: 1px 1px 1px #444;
+}
+
+#topScores td:first-child[cup='gold']::before
+{
+    color: gold;
+}
+
+#topScores td:first-child[cup='silver']::before
+{
+    color: #c0c0c0;
+}
+
+#topScores td:first-child[cup='bronze']::before
+{
+    color: #cd7f32;
 }

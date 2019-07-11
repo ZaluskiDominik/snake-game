@@ -9,11 +9,20 @@ let game = {
     //true if game has ended
     ended : false,
 
+    //called on page load
     init : function()
     {
+        topScores.fetch();
+        this.initConstantScoreFetching();
         this.initCanvas();
         this.initKeyEvents();
         this.restart();
+    },
+
+    //current top scores will be fetched from server every 10 seconds
+    initConstantScoreFetching : function()
+    {
+        setInterval(topScores.fetch.bind(topScores), 10000);
     },
 
     //gets handles for canvas and 2d context
@@ -52,14 +61,28 @@ let game = {
             this.start();
     },
 
+    clearTimer : function()
+    {
+        clearTimeout(this.timer);
+        this.timer = null;
+    },
+
     //starts the game
     start : function()
+    {
+        this.gameLoop();
+        clock.start();
+    },
+
+    //"main loop of the game"
+    //while game not ended calls update
+    gameLoop : function()
     {
         this.timer = setTimeout(() => {
             this.update();
             //recursively invoke start of next timer
             if ( !this.ended )
-                this.start();
+                this.gameLoop();
         }, snake.timeBetweenMoves);
     },
 
@@ -72,6 +95,9 @@ let game = {
         score.draw();
         //clear timer from previous game
         this.clearTimer();
+        //stop clock from previous game
+        clock.stop();
+        clock.reset();
         snake.init();
 
         food.randPos();
@@ -101,7 +127,6 @@ let game = {
     },
 
     //function called every time main timer fires
-    //"main loop of the game"
     update : function()
     {
         //move with snake
@@ -114,9 +139,17 @@ let game = {
     //ends games
     end : function()
     {
+        clock.stop();
         this.ended = true;
-        this.timer = null;
         this.drawMessage("Game over");
+
+        //get place to which qualifies player's score
+        let score = parseInt( $("#scoreVal").html() );
+        let place = topScores.getPlaceBasedOnScore(score);
+        //if it's good enough to be in top 3 scores open dialog where user
+        //will be able to enter his/her name
+        if (place !== false)
+            topScores.openSaveNewDialog(place, score);
     }
 };
 

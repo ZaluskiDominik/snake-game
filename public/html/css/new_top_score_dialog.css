@@ -1,0 +1,103 @@
+#saveNewScoreDialogBcg
+{
+    display: none;
+    background-color: #444;
+    opacity: 0.3;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#saveNewScoreDialog
+{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    width: 40%;
+    max-width: 600px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px black;
+    background-color: #ededed;
+    text-align: center;
+}
+
+#scoreDialogCloseBtn
+{
+    position: absolute;
+    top: 3px;
+    right: 4px;
+    font-size: 14px;
+    line-height: 0.8;
+    color: #666;
+}
+
+#scoreDialogCloseBtn:hover
+{
+    color: #888;
+}
+
+#saveNewScoreDialog h2
+{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: #888;
+    text-shadow: 1px 1px 1px #555;
+}
+
+#saveNewScoreDialog h2 span
+{
+    color: lightgreen;
+    font-weight: bold;
+}
+
+#saveScoreBtn
+{
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding: 6px 10px 6px 10px;
+    border-radius: 4px;
+    font-size: 17px;
+    color: #ddd;
+    text-shadow: 1px 1px 1px #555;
+    letter-spacing: 1px;
+    background-color: #1e90ff;
+    transition: background-color 0.3s;
+}
+
+#playerName
+{
+    height: 30px;
+    font-size: 20px;
+    padding-left: 4px;
+    background-color: #fafafa;
+    border: 2px solid #ddd;
+}
+
+#playerName:invalid
+{
+    border-color: rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 4px red;
+}
+
+label[for='playerName']
+{
+    font-size: 20px;
+    color: #444;
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+#saveScoreBtn:hover
+{
+    background-color: #0d80ee;
+}

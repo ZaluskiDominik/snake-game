@@ -16,8 +16,10 @@
 		<link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/canvas.css">
         <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/new_top_score_dialog.css">
 
-
+        <script src="js/config.js"></script>
+        <script src="js/request.js"></script>
         <script src="js/menu.js"></script>
         <script src="js/game.js"></script>
         <script src="js/field.js"></script>
@@ -25,6 +27,8 @@
         <script src="js/food.js"></script>
         <script src="js/body.js"></script>
         <script src="js/score.js"></script>
+        <script src="js/top_scores.js"></script>
+        <script src="js/clock.js"></script>
 	</head>
 
 	<body>
@@ -50,12 +54,30 @@
 
                 <div id="topScores">
                     <h2>Top scores</h2>
+                    <table>
+                        <tr>
+                            <th>Place</th>
+                            <th>Name</th>
+                            <th>Score</th>
+                        </tr>
+                    </table>
                 </div>
             </nav>
 
             <div id="canvasWrapper">
                 <canvas id="canvas"></canvas>
             </div>
+        </div>
+
+        <div id="saveNewScoreDialogBcg"></div>
+        <div id="saveNewScoreDialog">
+            <button id="scoreDialogCloseBtn">&times;</button>
+            <h2>
+                Congratulations! Your score is in <span id="place"></span> place :)
+            </h2>
+            <label for="playerName">Your Name</label>
+            <input id="playerName" type="text" required maxlength="10"><br>
+            <button id="saveScoreBtn" tabindex="-1">Save</button> 
         </div>
 	</body>
 

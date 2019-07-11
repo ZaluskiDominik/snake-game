@@ -18,7 +18,7 @@ let food = {
             //check if food's position isn't equal to some piece of snake's body
             for (i = 0 ; i < snake.snakeParts.length && 
                 ( snake.snakeParts[i].squareX != this.pos.squareX || 
-                snake.snakeParts[i].squareY != this.pos.y )
+                snake.snakeParts[i].squareY != this.pos.squareY )
                 ; i++);
         }
         //rerandom in next loop iteration if position of some piece of snake body

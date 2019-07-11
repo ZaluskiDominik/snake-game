@@ -150,6 +150,9 @@ let snake = {
 			snake.timeBetweenMoves -= ( snake.timeBetweenMoves > 20 ) * 2;
 			//rand new position of food
 			food.randPos();
+			//increase score
+			score.increment();
+			score.draw();
 		}
 	},
 
