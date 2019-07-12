@@ -1,17 +1,27 @@
 'use strict'
 
-let field = {
-    //length of the one square from which the field is made
-    squareLength : 20,
-    
+let field = {    
     //number of square pieces horizontally and vertically
     numSquares : {
         h : 20,
         w : 20
     },
 
+    //length of the one square from which the field is made
+    squareLength : 20,
+
     //width of the lines that separates squares
     separatorWidth : 1,
+
+    //init size of field's square
+    init : function()
+    {
+        //field's width as min from widow height and canvasWrapper width
+        let fieldLength = Math.min( $("#canvasWrapper").width(), $(window).height() )
+            - 200;
+        //set square's length(minimum 20px)
+        this.squareLength = Math.max(20, Math.floor( fieldLength / this.numSquares.w ));
+    },
 
     //draws game field
     draw : function()

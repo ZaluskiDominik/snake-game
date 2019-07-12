@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"field",
+				"fieldWidth"
+			],
+			[
+				"fiel",
+				"fieldWidth"
+			],
+			[
+				"squ",
+				"squareLength"
+			],
+			[
+				"num",
+				"numSquares"
+			],
+			[
 				"initC",
 				"initConstantScoreFetching"
 			],
@@ -138,10 +154,6 @@
 			[
 				"head",
 				"headPos"
-			],
-			[
-				"squ",
-				"squareY"
 			],
 			[
 				"squa",
@@ -372,10 +384,6 @@
 				"download"
 			],
 			[
-				"num",
-				"numSecondsWait"
-			],
-			[
 				"js",
 				"json_encode"
 			],
@@ -506,14 +514,6 @@
 			[
 				"reque",
 				"request"
-			],
-			[
-				"retur",
-				"return"
-			],
-			[
-				"open",
-				"openUploadStatusPopover"
 			]
 		]
 	},
@@ -550,7 +550,7 @@
 			"file": "public/html/js/game.js",
 			"settings":
 			{
-				"buffer_size": 4119,
+				"buffer_size": 4141,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -608,14 +608,12 @@
 	},
 	"expanded_folders":
 	[
-		"/C/xampp/htdocs/snake-game",
-		"/C/xampp/htdocs/snake-game/private",
-		"/C/xampp/htdocs/snake-game/private/config",
-		"/C/xampp/htdocs/snake-game/public",
-		"/C/xampp/htdocs/snake-game/public/html"
+		"/var/www/html/snake-game"
 	],
 	"file_history":
 	[
+		"/var/www/html/snake-game/public/html/js/field.js",
+		"/var/www/html/snake-game/private/config/database.php",
 		"/C/xampp/htdocs/snake-game/public/html/css/canvas.css",
 		"/C/xampp/htdocs/snake-game/public/html/js/field.js",
 		"/C/xampp/htdocs/snake-game/public/html/js/food.js",
@@ -741,13 +739,11 @@
 		"/C/xampp/htdocs/file_upload/private/templates/head.php",
 		"/C/xampp/htdocs/file_upload/public/html/js/alert.js",
 		"/C/xampp/htdocs/file_upload/private/php/custom-exceptions.php",
-		"/C/xampp/htdocs/file_upload/private/config/paths.php",
-		"/C/xampp/htdocs/file_upload/public/html/css/modal_window.css",
-		"/C/xampp/htdocs/file_upload/public/html/js/modal_window.js"
+		"/C/xampp/htdocs/file_upload/private/config/paths.php"
 	],
 	"find":
 	{
-		"height": 29.0
+		"height": 51.0
 	},
 	"find_in_files":
 	{
@@ -761,6 +757,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"init",
+			"canvasWrapper",
+			"root",
+			"localhost",
 			"brown",
 			"gray",
 			"lightgray",
@@ -884,11 +884,7 @@
 			"forwards",
 			"slideIn",
 			"name",
-			"from",
-			"777",
-			"lightgray",
-			"FontAwesome",
-			"block"
+			"from"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -923,8 +919,8 @@
 						"selection":
 						[
 							[
-								2215,
-								2215
+								2133,
+								2133
 							]
 						],
 						"settings":
@@ -941,10 +937,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1098.0,
+						"translation.y": 897.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -975,10 +971,10 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2378.0,
+						"translation.y": 1597.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -994,8 +990,8 @@
 						"selection":
 						[
 							[
-								2231,
-								2231
+								1706,
+								1706
 							]
 						],
 						"settings":
@@ -1005,10 +1001,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2638.0,
+						"translation.y": 3208.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1017,15 +1013,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4119,
+						"buffer_size": 4141,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1631,
-								1631
+								398,
+								398
 							]
 						],
 						"settings":
@@ -1042,7 +1038,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 538.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1053,11 +1049,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 39.0
 	},
 	"input":
 	{
-		"height": 39.3333333333
+		"height": 41.0
 	},
 	"layout":
 	{
@@ -1094,7 +1090,7 @@
 	"project": "snake-game.sublime-project",
 	"replace":
 	{
-		"height": 54.0
+		"height": 74.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1103,6 +1099,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"fiel",
+				"public/html/js/field.js"
+			],
+			[
+				"data",
+				"private/config/database.php"
+			],
 			[
 				"fie",
 				"public\\html\\js\\field.js"
@@ -1126,10 +1130,6 @@
 			[
 				"foo",
 				"public\\html\\js\\food.js"
-			],
-			[
-				"fiel",
-				"public\\html\\js\\field.js"
 			],
 			[
 				"men",
@@ -1610,10 +1610,6 @@
 			[
 				"aler",
 				"public\\html\\css\\alert.css"
-			],
-			[
-				"custo",
-				"private\\php\\custom-exceptions.php"
 			]
 		],
 		"width": 0.0

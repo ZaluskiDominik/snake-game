@@ -16,18 +16,18 @@ Below is an configuration file of vhost for this web app that needs to be put in
 	ServerAlias www.play-snake.pl
 
 	#root directory of web application - should point to public directory(<b>*</b>)
-	DocumentRoot <b>C:\xampp\htdocs\snake-game\public</b>
+	DocumentRoot <b>/var/www/html/snake-game/public</b>
 	#turn on errors displaying
 	Php_flag display_errors On
 	#prepend config file to all scripts - absolute path to web app's main config file(<b>*</b>)
-	Php_value auto_prepend_file <b>C:\xampp\htdocs\snake-game\private\config\config.php</b>
+	Php_value auto_prepend_file <b>/var/www/html/snake-game/private/config/config.php</b>
 	
 	#set default charset to utf8
 	Php_value default_charset UTF-8
 	AddDefaultCharset urf-8
 
 	#path to public directory of web app(<b>*</b>)
-	&lt;Directory <b>C:\xampp\htdocs\snake-game\public</b>&gt;
+	&lt;Directory <b>/var/www/html/snake-game/public</b>&gt;
 		#disable index of
 		Options Includes FollowSymlinks
 		#redirect root url to index page

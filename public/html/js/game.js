@@ -14,6 +14,7 @@ let game = {
     {
         topScores.fetch();
         this.initConstantScoreFetching();
+        field.init();
         this.initCanvas();
         this.initKeyEvents();
         this.restart();
